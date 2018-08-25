@@ -1,0 +1,5 @@
+# ---
+- name: Pull CTF challenges
+  git: repo=git@github.com:dciets/dci-ctf-2018.git dest=/opt/dci-ctf-2018 force=yes
+
+- include: coding.yml
