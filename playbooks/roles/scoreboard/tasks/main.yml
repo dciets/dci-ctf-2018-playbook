@@ -1,0 +1,18 @@
+---
+- name: Pull CTFd repository
+  git: repo=https://github.com/isislab/CTFd.git dest=/opt/ctfd force=yes
+
+- name: Copy production compose file in the repository
+  template:
+    src: ../files/docker-compose.production.yml
+    dest: /opt/ctfd/docker-compose.yml
+
+- name: Kill running containers
+  command: docker-compose kill
+  args:
+    chdir: /opt/ctfd
+
+- name: Launch CTFd website
+  docker_service:
+    project_src: /opt/ctfd
+    nocache: yes
