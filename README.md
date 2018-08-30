@@ -22,3 +22,9 @@ All the challenges are tagged by their names. Restarting a challenge is as simpl
 ❯ ansible-playbook playbooks/challenges.yml -u root --tags "coding1"
 ```
 This will rebuild the image for `coding1` challenge , kill the container of `coding1` (if it's running) and start a new container with the new image of `coding1`. 
+
+### scoreboard
+Provision the scoreboard hosts with the tools needed to run CTFd, then launch CTFd on those hosts with our configuration.
+```
+❯ ansible-playbook playbooks/scoreboard.yml -u root
+```
