@@ -34,8 +34,7 @@
     image: level4
     restart: yes
     ports:
-      - "0.0.0.0:10001:3000"
+      - "0.0.0.0:10004:3000"
   tags:
     - pwning
     - level4
-
