@@ -1,0 +1,29 @@
+---
+challenges:
+  #########################################
+  # Coding challenges
+  #########################################
+  - name: coding1
+    path: /opt/dci-ctf-2018/challenges/coding/coding1
+    ports: "0.0.0.0:5001:5001"
+
+  #########################################
+  # Pwning challenges
+  #########################################
+  - name: level1
+    path: '/opt/dci-ctf-2018/challenges/pwning/level1'
+    ports: "0.0.0.0:10001:3000"
+
+  - name: level4
+    path: '/opt/dci-ctf-2018/challenges/pwning/level4'
+    ports: "0.0.0.0:10004:3000"
+
+
+# `active_challenges` variable defaults to the `challenges` variable if no --extra-vars `challenge` is passed
+# when executing the playbook. If --extra-vars `challenge` variable is defined, the `challenges` list will be filtered
+# by challenge names. This allow us to build / run a single or a subset of challenges via something like:
+#
+#     ❯ ansible-playbook playbooks/challenges.yml -u root --extra-vars "challenge=coding1"
+#
+# The above command will only build and run the `coding1` challenge since the list of challenges will be filtered.
+active_challenges: "{{ challenges if challenge is not defined else challenges | selectattr('name', 'equalto', challenge) | list }}"
