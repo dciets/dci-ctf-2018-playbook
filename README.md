@@ -17,9 +17,9 @@ Pull, build and run the different challenges of DCI CTF 2018.
 ```
 
 ### restarting a specific challenge
-All the challenges are tagged by their names. Restarting a challenge is as simple as:
+Restarting a single challenge is as simple as:
 ```
-❯ ansible-playbook playbooks/challenges.yml -u root --tags "coding1"
+❯ ansible-playbook playbooks/challenges.yml -u root --extra-vars "challenge=coding1"
 ```
 This will rebuild the image for `coding1` challenge , kill the container of `coding1` (if it's running) and start a new container with the new image of `coding1`. 
 
