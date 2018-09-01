@@ -4,5 +4,4 @@
   tags:
     - always
 
-- include: coding.yml
-- include: pwning.yml
+- import_tasks: challenge.yml
