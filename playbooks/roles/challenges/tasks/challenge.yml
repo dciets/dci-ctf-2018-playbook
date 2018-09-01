@@ -1,0 +1,19 @@
+---
+- name: build challenge images
+  tags: build
+  docker_image:
+    name: "{{ item.name }}"
+    path: "{{ item.path }}"
+    force: true
+  with_items:
+    - "{{ challenges }}"
+
+- name: run challenge images
+  tags: run
+  docker_container:
+    name: "{{ item.name }}"
+    image: "{{ item.name }}"
+    restart: yes
+    ports:
+      - "{{ item.ports }}"
+  loop: "{{ challenges }}"
