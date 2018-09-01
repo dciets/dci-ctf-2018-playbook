@@ -1,5 +1,5 @@
 ---
-challenges:
+available_challenges:
   #########################################
   # Coding challenges
   #########################################
@@ -19,11 +19,11 @@ challenges:
     ports: "0.0.0.0:10004:3000"
 
 
-# `active_challenges` variable defaults to the `challenges` variable if no --extra-vars `challenge` is passed
+# `challenges` variable defaults to the `available_challenges` variable if no --extra-vars `challenge` is passed
 # when executing the playbook. If --extra-vars `challenge` variable is defined, the `challenges` list will be filtered
 # by challenge names. This allow us to build / run a single or a subset of challenges via something like:
 #
 #     ❯ ansible-playbook playbooks/challenges.yml -u root --extra-vars "challenge=coding1"
 #
 # The above command will only build and run the `coding1` challenge since the list of challenges will be filtered.
-active_challenges: "{{ challenges if challenge is not defined else challenges | selectattr('name', 'equalto', challenge) | list }}"
+challenges: "{{ available_challenges if challenge is not defined else available_challenges | selectattr('name', 'equalto', challenge) | list }}"

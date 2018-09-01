@@ -6,7 +6,7 @@
     path: "{{ item.path }}"
     force: true
   with_items:
-    - "{{ active_challenges }}"
+    - "{{ challenges }}"
 
 - name: run challenge images
   tags: run
@@ -17,4 +17,4 @@
     ports:
       - "{{ item.ports }}"
   with_items:
-    - "{{ active_challenges }}"
+    - "{{ challenges }}"
