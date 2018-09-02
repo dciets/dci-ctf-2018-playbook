@@ -14,9 +14,25 @@ available_challenges:
     path: '/opt/dci-ctf-2018/challenges/pwning/level1'
     ports: "0.0.0.0:10001:3000"
 
+  - name: level2
+    path: '/opt/dci-ctf-2018/challenges/pwning/level2'
+    ports: "0.0.0.0:10002:3000"
+
+  - name: level3
+    path: '/opt/dci-ctf-2018/challenges/pwning/level3'
+    ports: "0.0.0.0:10003:3000"
+
   - name: level4
     path: '/opt/dci-ctf-2018/challenges/pwning/level4'
     ports: "0.0.0.0:10004:3000"
+
+  - name: echo_server
+    path: '/opt/dci-ctf-2018/challenges/pwning/echo_server'
+    ports: "0.0.0.0:10005:3000"
+
+  - name: info_service
+    path: '/opt/dci-ctf-2018/challenges/pwning/info_service'
+    ports: "0.0.0.0:10006:3000"
 
 
 # `challenges` variable defaults to the `available_challenges` variable if no --extra-vars `challenge` is passed
