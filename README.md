@@ -1,5 +1,7 @@
-# DCICTF 2018 Ansible playbook
+# DCI CTF 2018 Ansible playbook
 Ansible playbook to manage the DCI CTF 2018 infrastructure
+
+Make sure to create an `ansible.cfg` and `dcictf-inventory` file at the root of the repo using the provided template files.
 
 ## Playbooks
 Basic description of the different playbooks
@@ -21,7 +23,7 @@ Restarting a single challenge is as simple as:
 ```
 ❯ ansible-playbook playbooks/challenges.yml -u root --extra-vars "challenge=coding1"
 ```
-This will rebuild the image for `coding1` challenge , kill the container of `coding1` (if it's running) and start a new container with the new image of `coding1`. 
+This will rebuild the image for `coding1` challenge , kill the container of `coding1` (if it's running) and start a new container with the new image of `coding1`.
 
 To kill all challenge containers, simply run:
 ```
