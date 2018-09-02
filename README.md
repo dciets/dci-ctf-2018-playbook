@@ -5,7 +5,7 @@ Ansible playbook to manage the DCICTF 2018 infrastructure
 Basic description of the different playbooks
 
 ### challenges-servers
-Provision the hosts with the tools needed to host the different challenges of DCI CTF 2018.
+Provision the hosts with the tools and dependencies needed to host and run the different challenges of DCI CTF 2018.
 ```
 ❯ ansible-playbook playbooks/challenges-server.yml -u root
 ```
