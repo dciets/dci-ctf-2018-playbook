@@ -1,5 +1,5 @@
 # DCICTF 2018 Ansible playbook
-Ansible playbook to manage the DCICTF 2018 infrastructure
+Ansible playbook to manage the DCI CTF 2018 infrastructure
 
 ## Playbooks
 Basic description of the different playbooks
