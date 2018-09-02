@@ -1,39 +1,53 @@
 ---
 available_challenges:
   #########################################
-  # Coding challenges
-  #########################################
-  - name: coding1
-    path: /opt/dci-ctf-2018/challenges/coding/coding1
-    ports: "0.0.0.0:5001:5001"
-
-  #########################################
   # Pwning challenges
   #########################################
   - name: level1
     path: '/opt/dci-ctf-2018/challenges/pwning/level1'
-    ports: "0.0.0.0:10001:3000"
+    ports: "0.0.0.0:3000:3000"
 
   - name: level2
     path: '/opt/dci-ctf-2018/challenges/pwning/level2'
-    ports: "0.0.0.0:10002:3000"
+    ports: "0.0.0.0:3001:3000"
 
   - name: level3
     path: '/opt/dci-ctf-2018/challenges/pwning/level3'
-    ports: "0.0.0.0:10003:3000"
+    ports: "0.0.0.0:3002:3000"
 
   - name: level4
     path: '/opt/dci-ctf-2018/challenges/pwning/level4'
-    ports: "0.0.0.0:10004:3000"
+    ports: "0.0.0.0:3003:3000"
 
   - name: echo_server
     path: '/opt/dci-ctf-2018/challenges/pwning/echo_server'
-    ports: "0.0.0.0:10005:3000"
+    ports: "0.0.0.0:3004:3000"
 
   - name: info_service
     path: '/opt/dci-ctf-2018/challenges/pwning/info_service'
-    ports: "0.0.0.0:10006:3000"
+    ports: "0.0.0.0:3005:3000"
 
+  #########################################
+  # Coding challenges
+  #########################################
+  - name: coding1
+    path: /opt/dci-ctf-2018/challenges/coding/coding1
+    ports: "0.0.0.0:4000:5001"
+
+  #########################################
+  # Web challenges
+  #########################################
+  - name: auth_server  # <--- TODO: shill ca marche po
+    path: '/opt/dci-ctf-2018/challenges/web/auth_server'
+    ports: "0.0.0.0:5000:3000"
+
+  - name: dark_souls_trivia
+    path: '/opt/dci-ctf-2018/challenges/web/dark_souls_trivia'
+    ports: "0.0.0.0:5001:5000"
+
+  - name: email_template_service
+    path: '/opt/dci-ctf-2018/challenges/web/email_template_service'
+    ports: "0.0.0.0:5002:8080"
 
 # `challenges` variable defaults to the `available_challenges` variable if no --extra-vars `challenge` is passed
 # when executing the playbook. If --extra-vars `challenge` variable is defined, the `challenges` list will be filtered

@@ -1,4 +1,8 @@
 ---
+- name: kill all running challenges
+  shell: docker kill $(docker ps -q)
+  tags: ['never', 'kill_challenges']
+
 - name: build challenge images
   tags: build
   docker_image:
@@ -18,3 +22,7 @@
       - "{{ item.ports }}"
   with_items:
     - "{{ challenges }}"
+
+- name: build mysql_challenges
+  tags: mysql_challenges
+  command: "./start.sh chdir=/opt/dci-ctf-2018/challenges/web/mysql_challenges"
