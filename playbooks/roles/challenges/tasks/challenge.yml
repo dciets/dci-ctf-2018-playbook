@@ -22,8 +22,8 @@
 - name: build and run mysql_challenges
   command: "./start.sh chdir=/opt/dci-ctf-2018/challenges/web/mysql_challenges"
   when: (challenge == "mysql_challenges") or challenge is not defined
+  tags: run
 
 - name: kill all running challenges
   shell: docker kill $(docker ps -q)
   tags: ['never', 'kill_challenges']
-
