@@ -1,4 +1,6 @@
 ---
+- import_tasks: nginx.yml
+
 - name: Pull CTFd repository
   git: repo=https://github.com/isislab/CTFd.git dest=/opt/ctfd force=yes
 
