@@ -4,6 +4,11 @@
     name: nginx
     state: latest
 
+- name: Copy production compose file in the repository
+  template:
+    src: ../files/ctf.dciets.conf
+    dest: /etc/nginx/sites-enabled/ctf.dciets.conf
+
 - name: Start nginx service
   service:
     name: nginx

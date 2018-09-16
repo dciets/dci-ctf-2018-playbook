@@ -1,0 +1,13 @@
+---
+- name: Install nginx
+  apt:
+    name: nginx
+    state: latest
+
+- name: Copy nginx configuration
+  template:
+    src: ../files/dciets-challenges.conf
+    dest: /etc/nginx/sites-enabled/dciets-challenges.conf
+
+- name: restart nginx
+  service: name=nginx state=restarted
