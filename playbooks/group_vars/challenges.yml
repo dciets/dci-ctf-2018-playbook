@@ -32,22 +32,22 @@ available_challenges:
   #########################################
   - name: coding1
     path: /opt/dci-ctf-2018/challenges/coding/coding1
-    ports: "0.0.0.0:4000:5001"
+    ports: "127.0.0.1:4000:5001"
 
   #########################################
   # Web challenges
   #########################################
   - name: auth_server  # <--- TODO: shill ca marche po
     path: '/opt/dci-ctf-2018/challenges/web/auth_server'
-    ports: "0.0.0.0:5000:3000"
+    ports: "127.0.0.1:5000:3000"
 
   - name: dark_souls_trivia
     path: '/opt/dci-ctf-2018/challenges/web/dark_souls_trivia'
-    ports: "0.0.0.0:5001:5000"
+    ports: "127.0.0.1:5001:5000"
 
   - name: email_template_service
     path: '/opt/dci-ctf-2018/challenges/web/email_template_service'
-    ports: "0.0.0.0:5002:8080"
+    ports: "127.0.0.1:5002:8080"
 
 # `challenges` variable defaults to the `available_challenges` variable if no --extra-vars `challenge` is passed
 # when executing the playbook. If --extra-vars `challenge` variable is defined, the `challenges` list will be filtered
