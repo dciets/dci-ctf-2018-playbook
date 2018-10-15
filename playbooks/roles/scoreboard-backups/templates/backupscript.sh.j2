@@ -1,0 +1,30 @@
+#!/bin/bash
+DATETIME=`date +%y-%m-%d-%H_%M`
+SRC={{ CTFD_DATA_SRC }}
+DST={{ BUCKET_DESTINATION }}
+GIVENNAME={{ BACKUP_NAME }}
+
+tarandzip(){
+    echo "\n##### Gathering files #####\n"
+    if tar -czvf $GIVENNAME-$DATETIME.tar.gz $SRC; then
+        echo "\n##### Done gathering files #####\n"
+        return 0
+    else
+        echo "\n##### Failed to gather files #####\n"
+        return 1
+    fi
+}
+movetoSpace(){
+    echo "\n##### MOVING TO SPACE #####\n"
+    if /usr/bin/s3cmd put $GIVENNAME-$DATETIME.tar.gz s3://$DST; then
+        echo "\n##### Done moving files to s3://"$DST" #####\n"
+        return 0
+    else
+        echo "\n##### Failed to move files to the Space #####\n"
+        return 1
+    fi
+}
+
+if tarandzip; then
+  movetoSpace
+fi

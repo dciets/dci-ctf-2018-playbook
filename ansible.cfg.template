@@ -1,0 +1,11 @@
+[defaults]
+
+# inventory of hosts
+inventory = ./dcictf-inventory
+
+# default user to use for playbooks if user is not specified
+remote_user = root
+
+# if set, always use this private key file for authentication, same as
+# if passing --private-key to ansible or ansible-playbook
+private_key_file = <path to your private_key>

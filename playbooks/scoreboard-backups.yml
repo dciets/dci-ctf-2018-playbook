@@ -1,0 +1,4 @@
+---
+- hosts: scoreboard
+  roles:
+    - scoreboard-backups

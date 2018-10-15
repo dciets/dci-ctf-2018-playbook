@@ -1,0 +1,23 @@
+---
+- name: Install nginx
+  apt:
+    name: nginx
+    state: latest
+
+- name: Copy nginx.conf
+  template:
+    src: nginx.conf.j2
+    dest: /etc/nginx/nginx.conf
+
+- name: Copy nginx server configuration
+  template:
+    src: dciets-challenges.conf.j2
+    dest: /etc/nginx/sites-enabled/dciets-challenges.conf
+
+- name: Give log writting access to nginx worker
+  file:
+    path: /var/log/nginx
+    owner: www-data
+
+- name: restart nginx
+  service: name=nginx state=restarted

@@ -1,0 +1,10 @@
+# ---
+- name: Pull CTF challenges
+  git: repo=git@github.com:dciets/dci-ctf-2018.git dest=/opt/dci-ctf-2018 force=yes
+  tags:
+    - always
+
+- name: Create a network for shill :)
+  shell: "docker network create --internal isolated || echo -n"
+
+- import_tasks: challenge.yml

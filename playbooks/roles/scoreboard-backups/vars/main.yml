@@ -1,0 +1,9 @@
+---
+SPACES_API_KEY: ""
+SPACES_API_KEY_SECRET: ""
+HOST_BASE: ""
+HOST_BUCKET: ""
+
+CTFD_DATA_SRC: "/opt/ctfd/.data"
+BACKUP_NAME: "ctfd-data"
+BUCKET_DESTINATION: "ctf-dciets-2018"

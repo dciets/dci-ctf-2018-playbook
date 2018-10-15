@@ -1,0 +1,20 @@
+---
+- name: Install nginx
+  apt:
+    name: nginx
+    state: latest
+
+- name: setup nginx status endpoint
+  template:
+    src: ../files/nginx.status.conf
+    dest: /etc/nginx/sites-enabled/nginx.status.conf
+
+- name: setup nginx datadog configuration file
+  template:
+    src: ../files/conf.yaml
+    dest: /etc/datadog-agent/conf.d/nginx.d/conf.yaml
+
+- name: Start nginx service
+  service:
+    name: nginx
+    state: reloaded

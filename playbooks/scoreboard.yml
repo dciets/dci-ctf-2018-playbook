@@ -1,0 +1,6 @@
+---
+- hosts: scoreboard
+  roles:
+    - common
+    - docker
+    - scoreboard

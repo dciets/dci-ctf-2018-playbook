@@ -1,0 +1,6 @@
+---
+- hosts: challenges
+  roles:
+    - common
+    - docker
+    - challenges-server

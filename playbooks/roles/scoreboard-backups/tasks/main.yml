@@ -1,0 +1,25 @@
+---
+- name: Install s3cmd
+  apt:
+    name: s3cmd
+    state: latest
+
+- name: Move s3 config file to host
+  template:
+    src: s3cfg.j2
+    dest: /root/.s3cfg
+
+- name: Move backup script to host
+  template:
+    src: backupscript.sh.j2
+    dest: /opt/backupscript.sh
+
+- name: Create backup job
+  cron:
+    name: backup ctfd
+    minute: 0
+    job: "sh /opt/backupscript.sh"
+
+- name: Backup CTFD
+  shell: "sh /opt/backupscript.sh"
+  tags: ['never', 'execute_backup']

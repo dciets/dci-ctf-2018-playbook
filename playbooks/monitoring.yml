@@ -1,0 +1,4 @@
+---
+- hosts: challenges
+  roles:
+    - monitoring

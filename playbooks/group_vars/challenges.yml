@@ -1,0 +1,67 @@
+---
+available_challenges:
+  #########################################
+  # Pwning challenges
+  #########################################
+  - name: level1
+    path: '/opt/dci-ctf-2018/challenges/pwning/level1'
+    ip: '0.0.0.0'
+    ports: "3000:3000"
+
+  - name: level2
+    path: '/opt/dci-ctf-2018/challenges/pwning/level2'
+    ip: '0.0.0.0'
+    ports: "3001:3000"
+
+  - name: level3
+    path: '/opt/dci-ctf-2018/challenges/pwning/level3'
+    ip: '0.0.0.0'
+    ports: "3002:3000"
+
+  - name: level4
+    path: '/opt/dci-ctf-2018/challenges/pwning/level4'
+    ip: '0.0.0.0'
+    ports: "3003:3000"
+
+  - name: echo_server
+    path: '/opt/dci-ctf-2018/challenges/pwning/echo_server'
+    ip: '0.0.0.0'
+    ports: "3004:3000"
+
+  - name: info_service
+    path: '/opt/dci-ctf-2018/challenges/pwning/info_service'
+    ip: '0.0.0.0'
+    ports: "3005:3000"
+
+  #########################################
+  # Coding challenges
+  #########################################
+  - name: coding1
+    path: /opt/dci-ctf-2018/challenges/coding/coding1
+    ip: '127.0.0.1'
+    ports: "4000:5001"
+
+  #########################################
+  # Web challenges
+  #########################################
+  - name: email_template_service
+    path: '/opt/dci-ctf-2018/challenges/web/email_template_service'
+    ip: '127.0.0.1'
+    ports: "6002:8080"
+
+  #########################################
+  # Forensics challenges
+  #########################################
+  - name: auth_server
+    path: '/opt/dci-ctf-2018/challenges/forensics/auth_server'
+    ip: '0.0.0.0'
+    ports: "6000:3000"
+
+# `challenges` variable defaults to the `available_challenges` variable if no --extra-vars `challenge` is passed
+# when executing the playbook. If --extra-vars `challenge` variable is defined, the `challenges` list will be filtered
+# by challenge names. This allow us to build / run a single or a subset of challenges via something like:
+#
+#     ❯ ansible-playbook playbooks/challenges.yml -u root --extra-vars "challenge=coding1"
+#
+# The above command will only build and run the `coding1` challenge since the list of challenges will be filtered.
+challenges: "{{ available_challenges if challenge is not defined else available_challenges | selectattr('name', 'equalto', challenge) | list }}"

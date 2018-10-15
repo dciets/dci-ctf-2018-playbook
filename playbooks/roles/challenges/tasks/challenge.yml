@@ -1,0 +1,61 @@
+---
+- name: build challenge images
+  tags: build
+  docker_image:
+    name: "{{ item.name }}"
+    path: "{{ item.path }}"
+    force: true
+  with_items:
+    - "{{ challenges }}"
+
+- name: run challenge images
+  tags: run
+  docker_container:
+    name: "{{ item.name }}"
+    image: "{{ item.name }}"
+    restart: yes
+    ports:
+      - "{{ item.ip }}:{{ item.ports }}"
+  with_items:
+    - "{{ challenges }}"
+
+- name: Build and run mysql_challenges
+  command: "./start.sh chdir=/opt/dci-ctf-2018/challenges/web/mysql_challenges"
+  when: (challenge == "mysql_challenges") or challenge is not defined
+  tags: run
+
+- name: Build and run Fouraide
+  when: (challenge == "fouraide") or challenge is not defined
+  tags: run
+  docker_service:
+    project_src: "/opt/dci-ctf-2018/challenges/web/fouraide"
+    nocache: yes
+
+- name: Build and run darksouls
+  when: (challenge == "dark_souls_trivia") or challenge is not defined
+  tags: run
+  docker_service:
+    project_src: "/opt/dci-ctf-2018/challenges/web/dark_souls_trivia"
+    nocache: yes
+    recreate: always
+
+#########################################################
+# Challenge killing procedure
+#########################################################
+- name: kill all running challenges
+  tags: ['never', 'kill_challenges']
+  shell: "docker stop {{ item.name }}"
+  with_items:
+    - "{{ challenges }}"
+
+- name: kill mysql_challenges
+  tags: ['never', 'kill_challenges']
+  command: "docker-compose stop chdir=/opt/dci-ctf-2018/challenges/web/mysql_challenges"
+
+- name: kill fouraide challenge
+  tags: ['never', 'kill_challenges']
+  command: "docker-compose stop chdir=/opt/dci-ctf-2018/challenges/web/fouraide"
+
+- name: kill darksouls challenge
+  tags: ['never', 'kill_challenges']
+  command: "docker-compose stop chdir=/opt/dci-ctf-2018/challenges/web/dark_souls_trivia"
